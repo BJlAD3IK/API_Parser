@@ -1,0 +1,31 @@
+[2026-01-21 09:24:10] [INFO] === DIPLOMA: Stateful Fuzzer v1.4 (Final RC) ===
+[2026-01-21 09:24:10] [INFO] --- [PHASE 1] Static Analysis ---
+[2026-01-21 09:24:10] [INFO] Downloading spec from https://raw.githubusercontent.com/erev0s/VAmPI/master/openapi_specs/openapi3.yml...
+[2026-01-21 09:24:10] [INFO] Spec downloaded successfully.
+[2026-01-21 09:24:10] [INFO] Analyzed 12 endpoints.
+[2026-01-21 09:24:10] [INFO] --- [PHASE 2] Logic Mapping ---
+[2026-01-21 09:24:10] [INFO] Graph built with 4 nodes and 3 edges.
+[2026-01-21 09:24:10] [INFO] --- [PHASE 3] Visualization ---
+[2026-01-21 09:24:11] [INFO] [+] Beautiful graph saved to diploma_graph.png
+[2026-01-21 09:24:11] [INFO] --- [PHASE 4] Attack Simulation ---
+[2026-01-21 09:24:11] [INFO] [*] Generated dynamic attacker: user_6e06f
+[2026-01-21 09:24:11] [INFO] --- [INIT] Auto-Registration ---
+[2026-01-21 09:24:11] [INFO] [+] User 'user_6e06f' registered successfully.
+[2026-01-21 09:24:11] [INFO] --- [INIT] Authenticating ---
+[2026-01-21 09:24:11] [INFO] Login Successful! Token: eyJhbGciOi...
+[2026-01-21 09:24:11] [INFO] Starting traversal from GET
+/users/v1/{username}...
+[2026-01-21 09:24:11] [INFO] --> DELETE /users/v1/hacker [Attacking VICTIM (hacker)]
+[2026-01-21 09:24:11] [INFO]     Status: 401
+[2026-01-21 09:24:11] [INFO] --> PUT /users/v1/hacker/email [Attacking VICTIM (hacker)]
+[2026-01-21 09:24:11] [CRITICAL]     [!!!] VULNERABILITY CONFIRMED: [BOLA] Successfully modified account of 'hacker' on /users/v1/hacker/email
+[2026-01-21 09:24:11] [INFO] --> PUT /users/v1/hacker/password [Attacking VICTIM (hacker)]
+[2026-01-21 09:24:11] [CRITICAL]     [!!!] VULNERABILITY CONFIRMED: [BOLA] Successfully modified account of 'hacker' on /users/v1/hacker/password
+[2026-01-21 09:24:11] [INFO] 
+========================================
+[2026-01-21 09:24:11] [INFO]        SCANNING SUMMARY REPORT       
+[2026-01-21 09:24:11] [INFO] ========================================
+[2026-01-21 09:24:11] [CRITICAL] TOTAL VULNERABILITIES FOUND: 2
+[2026-01-21 09:24:11] [CRITICAL] 1. [BOLA] Successfully modified account of 'hacker' on /users/v1/hacker/email
+[2026-01-21 09:24:11] [CRITICAL] 2. [BOLA] Successfully modified account of 'hacker' on /users/v1/hacker/password
+[2026-01-21 09:24:11] [INFO] ========================================

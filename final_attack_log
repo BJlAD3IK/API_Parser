@@ -1,0 +1,32 @@
+[2026-01-21 09:14:20] [INFO] === DIPLOMA: Stateful Fuzzer v1.3 (Dynamic) Started ===
+[2026-01-21 09:14:20] [INFO] --- [PHASE 1] Static Analysis ---
+[2026-01-21 09:14:20] [INFO] Downloading spec from https://raw.githubusercontent.com/erev0s/VAmPI/master/openapi_specs/openapi3.yml...
+[2026-01-21 09:14:22] [INFO] Spec downloaded successfully.
+[2026-01-21 09:14:22] [INFO] Analyzed 12 endpoints.
+[2026-01-21 09:14:22] [INFO] --- [PHASE 2] Logic Mapping ---
+[2026-01-21 09:14:22] [INFO] Graph built with 4 nodes and 3 edges.
+[2026-01-21 09:14:22] [INFO] --- [PHASE 3] Visualization ---
+[2026-01-21 09:14:23] [INFO] Graph image saved to diploma_graph.png
+[2026-01-21 09:14:23] [INFO] --- [PHASE 4] Attack Simulation ---
+[2026-01-21 09:14:23] [INFO] [*] Generated dynamic attacker: user_3b0b9 / CithH2Wz91
+[2026-01-21 09:14:23] [INFO] --- [INIT] Auto-Registration ---
+[2026-01-21 09:14:23] [INFO] [+] User 'user_3b0b9' registered successfully.
+[2026-01-21 09:14:23] [INFO] --- [INIT] Authenticating ---
+[2026-01-21 09:14:23] [INFO] [DEBUG] Raw Server Response: {'auth_token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJleHAiOjE3NjkwMDQ5MjMsImlhdCI6MTc2OTAwNDg2Mywic3ViIjoidXNlcl8zYjBiOSJ9.mPimRqAgSwzgpVrW3ack0vMt2HVT3UkPIG9dcpsr5bU', 'message': 'Successfully logged in.', 'status': 'success'}
+[2026-01-21 09:14:23] [INFO] Login Successful! Token captured: eyJhbGciOiJIUzI...
+[2026-01-21 09:14:23] [INFO] Starting traversal from GET /users/v1/{username}...
+[2026-01-21 09:14:23] [INFO] --> Attacking: DELETE /users/v1/hacker
+[2026-01-21 09:14:23] [INFO]     Status: 401
+[2026-01-21 09:14:23] [INFO] --> Attacking: PUT /users/v1/hacker/email
+[2026-01-21 09:14:23] [CRITICAL]     [!!!] VULNERABILITY CONFIRMED: [BOLA/IDOR] Email change allowed on /users/v1/hacker/email (Status: 204)
+[2026-01-21 09:14:23] [INFO] --> Attacking: PUT /users/v1/hacker/password
+[2026-01-21 09:14:23] [CRITICAL]     [!!!] VULNERABILITY CONFIRMED: [BOLA/IDOR] Password change allowed on /users/v1/hacker/password (Status: 204)
+[2026-01-21 09:14:23] [INFO] 
+========================================
+[2026-01-21 09:14:23] [INFO]        SCANNING SUMMARY REPORT       
+[2026-01-21 09:14:23] [INFO] ========================================
+[2026-01-21 09:14:23] [CRITICAL] TOTAL VULNERABILITIES FOUND: 2
+[2026-01-21 09:14:23] [CRITICAL] 1. [BOLA/IDOR] Email change allowed on /users/v1/hacker/email
+[2026-01-21 09:14:23] [CRITICAL] 2. [BOLA/IDOR] Password change allowed on /users/v1/hacker/password
+[2026-01-21 09:14:23] [INFO] ========================================
+[2026-01-21 09:14:23] [INFO] Check 'fuzzer_report.log' for detailed execution trace.
