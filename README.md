@@ -1,4 +1,5 @@
-Stateful REST API Fuzzer (Bachelor Thesis PoC)
+Stateful REST API Fuzzer
+Proof-of-Concept Implementation for Bachelor's Thesis in Cybersecurity
 
 📌 About
 
@@ -10,6 +11,9 @@ Unlike most traditional DAST tools that test endpoints in isolation, this fuzzer
 
 This is a PoC, not a full-scale scanner. Some assumptions are made to keep the implementation simple.
 
+This project is a Proof-of-Concept stateful REST API fuzzer developed as part of my Bachelor's thesis in Cybersecurity.
+
+It aims to help security researchers and students automatically detect Broken Object Level Authorization (BOLA / IDOR) vulnerabilities in REST APIs.
 
 🧠 Core Idea
 
@@ -24,6 +28,11 @@ Traverse the graph and execute stateful attacks, such as modifying or deleting r
 
 The focus is specifically on authorization logic, not input validation or injection vulnerabilities.
 
+1. Parse OpenAPI specification to extract endpoints, HTTP methods, and parameters.
+   
+2. Build a dependency graph (NetworkX) representing logical flows between endpoints (create → read → update → delete).
+   
+3. Traverse the graph to execute stateful attacks, such as modifying or deleting resources owned by other users.
 
 🚀 Features
 
@@ -44,41 +53,39 @@ Some endpoints may require manual adjustment if the OpenAPI definition is incomp
 
 🛠️ Tech Stack
 
-Python 3.10+
-
-NetworkX — dependency graph construction
-
-Matplotlib — graph visualization
-
-Requests — HTTP client
-
-PyYAML — OpenAPI parsing
+- Python 3.10+
+  
+- NetworkX — dependency graph construction
+  
+- Matplotlib — graph visualization
+  
+- Requests — HTTP client
+  
+- PyYAML — OpenAPI parsing
 
 
 📂 Project Structure
 
-main_fusion.py — entry point, orchestrates the scan
+main_fusion.py       — entry point, orchestrates the scan
 
-api_parser.py — downloads and parses OpenAPI specs
+api_parser.py        — downloads and parses OpenAPI specs
 
-graph_builder.py — builds the endpoint dependency graph
+graph_builder.py     — builds the endpoint dependency graph
 
-traverser.py — attack engine, performs DFS traversal and BOLA tests
+traverser.py         — attack engine (DFS traversal and BOLA tests)
 
-logger_config.py — centralized logging setup
+logger_config.py     — centralized logging setup
 
 
 ⚡ Usage
 
-Install dependencies:
+# Install dependencies
 
-pip install requests networkx matplotlib pyyaml
+pip install -r requirements.txt
 
-
-Run the fuzzer:
+# Run the fuzzer
 
 python main_fusion.py
-
 
 By default, the tool targets a local vulnerable API instance (e.g. VAmPI) running on port 5000.
 
@@ -94,9 +101,9 @@ When tested against the VAmPI testbed, the fuzzer was able to detect multiple au
 
 ⚠️ Limitations
 
-The dependency graph is heuristic-based and mainly focused on CRUD-style APIs.
-
-Complex authorization models are not inferred automatically.
-
-The tool is intended for academic and educational use only.
+- Dependency graph is heuristic-based and mainly focused on CRUD-style APIs.
+  
+- Complex authorization models are not inferred automatically.
+  
+- Intended for academic and educational use only.
 
