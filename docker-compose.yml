@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  vampi:
+    image: erev0s/vampi:latest
+    container_name: vampi_target
+    ports:
+      - "5000:5000"
+    restart: unless-stopped
+    # Надійна перевірка доступності за допомогою wget, який є в базовому образі alpine/python
+    healthcheck:
+      test: ["CMD-SHELL", "wget --no-verbose --tries=1 --spider http://127.0.0.1:5000/ || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s # Даємо час додатку на ініціалізацію бази та роутів
