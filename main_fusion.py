@@ -30,7 +30,7 @@ def generate_random_creds():
     }
 
 def main():
-    log.info("=== DIPLOMA: Stateful Fuzzer v1.4 (Final RC) ===")
+    log.info("=== DIPLOMA: Stateful Fuzzer v1.0 (Final RC) ===")
     
     ensure_victim_exists()
 
