@@ -1,4 +1,4 @@
-[2026-01-21 09:24:10] [INFO] === DIPLOMA: Stateful Fuzzer v1.4 (Final RC) ===
+[2026-01-21 09:24:10] [INFO] === DIPLOMA: Stateful Fuzzer v1.0 (Final RC) ===
 [2026-01-21 09:24:10] [INFO] --- [PHASE 1] Static Analysis ---
 [2026-01-21 09:24:10] [INFO] Downloading spec from https://raw.githubusercontent.com/erev0s/VAmPI/master/openapi_specs/openapi3.yml...
 [2026-01-21 09:24:10] [INFO] Spec downloaded successfully.
